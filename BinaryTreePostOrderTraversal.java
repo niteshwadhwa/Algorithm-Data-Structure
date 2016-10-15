@@ -8,27 +8,22 @@
  * }
  */
 public class Solution {
-    public List<Integer> preorderTraversal(TreeNode root) {
+    public List<Integer> postorderTraversal(TreeNode root) {
         List<Integer> arr = new ArrayList<Integer>();
         if(root == null){
             return arr;
         }
-        return getPreOrderTraversal(root,arr);
+        return getPostOrderTraversal(root,arr);
     }
     
-    public List<Integer> getPreOrderTraversal(TreeNode root, List<Integer>arr){
-        
+    public List<Integer> getPostOrderTraversal(TreeNode root, List<Integer> arr){
         if(root == null){
             return arr;
         }
-        
+        arr = getPostOrderTraversal(root.left, arr); 
+        arr = getPostOrderTraversal(root.right, arr);
         arr.add(root.val);
-        arr = getPreOrderTraversal(root.left,arr);
-        arr = getPreOrderTraversal(root.right,arr);
-        
         return arr;
     }
-    
-    
     
 }
